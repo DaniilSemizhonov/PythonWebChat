@@ -1,3 +1,4 @@
+import argparse
 import asyncio
 
 from pywebio import start_server
@@ -69,4 +70,7 @@ async def refresh_msg(nickname, msg_box):
 
 
 if __name__ == "__main__":
-    start_server(main, debug=True, port=8080, cdn=False)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--p", type=int, default=8080)
+    args = parser.parse_args()
+    start_server(main, port=args.port)
